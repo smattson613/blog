@@ -6,7 +6,7 @@ import About from "./About";
 import Missing from "./Missing";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import { format } from 'date-fns';
+import { format } from 'date-fns';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -25,7 +25,7 @@ function App() {
     {
       id: 3,
       title: "My 3rd Post",
-      datetime: "July 01, 2021 11:17:36 AM",
+      datetime: "July 01, 2021 11:17:35 AM",
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
     },
     {
@@ -52,7 +52,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = "format(new Date(), 'MMMM dd, yyyy pp');"
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = { id, title: postTitle, datetime, body: postBody };
     const allPosts = [...posts, newPost];
     setPosts(allPosts);
